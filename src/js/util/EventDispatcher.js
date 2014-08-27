@@ -60,5 +60,5 @@
 	};
 
 	ns.EventDispatcher = EventDispatcher;
-	global.namespace;
+	global.namespace = ns;
 })(this, document, jQuery, this.namespace);
