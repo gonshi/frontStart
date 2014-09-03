@@ -15,11 +15,11 @@ html(lang='ja')
       script(src='/js/lib/html5shiv.js')
   body
     block body
-  block scripts
-    each val in libs
-      script(src=val)
-    if prod
-      script(src='/js/app.min.js')
-    else
-        each val in sc
-          script(src=val)
+    block scripts
+      each val in libs
+        script(src=val)
+      if prod
+        script(src='/js/app.min.js')
+      else
+          each val in sc
+            script(src=val)
