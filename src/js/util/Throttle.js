@@ -1,14 +1,14 @@
 (function(global, doc, $, ns, undefined) {
-	'use strict';
-	ns = ns || {};	
+  'use strict';
+  ns = ns || {};  
 
-	function Throttle(minInterval) {
+  function Throttle(minInterval) {
     this.interval = minInterval;
     this.prevTime = 0;
     this.timer = function(){};
-	}
+  }
 
-	Throttle.prototype.exec = function(callback) {
+  Throttle.prototype.exec = function(callback) {
     var now = + new Date(),
         delta = now - this.prevTime;
 
@@ -22,6 +22,6 @@
     }
   };
 
-	ns.Throttle = Throttle;
+  ns.Throttle = Throttle;
   global.namespace = ns;
 })(this, document, jQuery, this.namespace);
