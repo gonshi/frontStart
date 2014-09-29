@@ -14,7 +14,8 @@
     if ( this.hasEventListener(eventName) ) {
       var events = this._events[ eventName ];
       var i;
-      for ( i = 0; i < events.length; i++ ) {
+      var eventsLength;
+      for ( i = 0; i < eventsLength; i++ ) {
         if ( events[ i ] === callback ) {
           return;
         }
@@ -50,12 +51,13 @@
       return;
     }
     else{
-      var events = this._events[ eventName ],
+      var events = this._events[ eventName ];
       var i;
-      copyEvents = $.merge( [], events ),
-      arg        = $.merge( [], arguments );
+      var copyEvents = $.merge( [], events );
+      var copyEventsLength = copyEvents.length;
+      var arg        = $.merge( [], arguments );
       arg.splice( 0, 2 );
-      for ( i = 0; i < copyEvents.length; i++ ) {
+      for ( i = 0; i < copyEventsLength; i++ ) {
         copyEvents[ i ].apply( opt_this || this, arg );
       }
     }
