@@ -6,12 +6,12 @@
     this._events = {};
   }
 
-  EventDispatcher.prototype.hasEventListener = function( eventName ) {
+  EventDispatcher.prototype.checkEvent = function( eventName ) {
     return !!this._events[ eventName ];
   };
 
-  EventDispatcher.prototype.addEventListener = function( eventName, callback ) {
-    if ( this.hasEventListener(eventName) ) {
+  EventDispatcher.prototype.listen = function( eventName, callback ) {
+    if ( this.checkEvent(eventName) ) {
       var events = this._events[ eventName ];
       var i;
       var eventsLength;
@@ -28,8 +28,8 @@
     return this;
   };
 
-  EventDispatcher.prototype.removeEventListener = function( eventName, callback ) {
-    if ( !this.hasEventListener(eventName) ) {
+  EventDispatcher.prototype.removeEvent = function( eventName, callback ) {
+    if ( !this.checkEvent(eventName) ) {
       return;
     }
     else{
@@ -46,8 +46,8 @@
     return this;
   };
 
-  EventDispatcher.prototype.fireEvent = function( eventName, opt_this ) {
-    if ( !this.hasEventListener(eventName) ) {
+  EventDispatcher.prototype.fire = function( eventName, opt_this ) {
+    if ( !this.checkEvent(eventName) ) {
       return;
     }
     else{
