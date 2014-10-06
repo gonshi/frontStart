@@ -1,4 +1,0 @@
-@mixin image-size($name, $pixel: 1){
-	width: image-width($name) / $pixel;
-	height: image-height($name) / $pixel;
-}

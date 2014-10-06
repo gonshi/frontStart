@@ -32,7 +32,7 @@ module.exports = function(grunt) {
             grunt.config.set(['jshint', 'each', 'files'], files);
             return ['jshint:each', 'copy:js'];
         },
-        scss: function() {
+        sass: function() {
             return ['compass:dev'];
         },
         png: '<%= esteWatch.img %>',

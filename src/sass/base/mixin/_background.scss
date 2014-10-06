@@ -1,4 +1,0 @@
-@mixin background-image( $img, $size: contain ){
-  background: image-url( $img ) no-repeat center;
-  background-size: $size;
-}
