@@ -1,4 +1,4 @@
-(function(global, doc, $, ns, undefined) {
+( function( global, doc, $, ns ) {
   'use strict';
   ns = ns || {};
 
@@ -12,4 +12,4 @@
   };
 
   global.namespace = ns;
-})(this, document, jQuery, this.namespace); 
+})( this, document, jQuery, this.namespace ); 

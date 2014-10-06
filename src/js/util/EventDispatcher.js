@@ -1,4 +1,4 @@
-(function( global, doc, $, ns, undefined ) {
+( function( global, doc, $, ns ) {
   'use strict';
   ns = ns || {};  
 
