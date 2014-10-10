@@ -1,0 +1,9 @@
+%hideText
+  overflow: hidden
+
+  &:before
+    display: block
+    width: 0
+    height: 100%
+    content: ""
+
