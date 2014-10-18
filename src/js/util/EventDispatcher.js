@@ -14,7 +14,7 @@
     if ( this.checkEvent(eventName) ) {
       var events = this._events[ eventName ];
       var i;
-      var eventsLength;
+      var eventsLength = events.length;
       for ( i = 0; i < eventsLength; i++ ) {
         if ( events[ i ] === callback ) {
           return;
@@ -64,5 +64,5 @@
   };
 
   ns.EventDispatcher = EventDispatcher;
-  global.namespace = ns;
-})( this, document, jQuery, this.namespace );
+  global.benetton = ns;
+})( this, document, jQuery, this.benetton );

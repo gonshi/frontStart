@@ -12,11 +12,11 @@
 
 # Set this to the root of your project when deployed:
 http_path = (environment == :production)? "/": "/"
-css_dir = (environment == :production)? "dist/css": ".tmp/css"
+css_dir = (environment == :production)? "../css": ".tmp/css"
 sass_dir = "src/sass"
-images_dir = (environment == :production)? "dist/img": ".tmp/img"
+images_dir = (environment == :production)? "../img": ".tmp/img"
 http_images_path = "/img"
-generated_images_dir = (environment == :production)? "dist/img" : ".tmp/img"
+generated_images_dir = (environment == :production)? "../img" : ".tmp/img"
 http_generated_images_path = "/img"
 
 

@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         dir: {
             src: 'src',
             tmp: '.tmp',
-            dist: 'dist'
+            dist: '..'
         },
         pkg: grunt.file.readJSON('package.json'),
         jade: {

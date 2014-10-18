@@ -24,6 +24,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('dev', function() {
         grunt.task.run([
+            'clean:temp',
             'jshint:all',
             'copy:js',
             'copy:img',
