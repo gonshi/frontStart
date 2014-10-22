@@ -1,8 +1,7 @@
 module.exports = {
     temp:['<%= config.dir.tmp %>/**/*'],
     prod:{
-      all: ['<%= config.dir.dist %>/**/*'],
-      exclude: ['!<%= config.dir.dist %>/_build/**']
+      src: [ '<%= config.dir.dist %>/img/**/*' ]
     },
     bower:['<%= config.dir.src %>/js/lib/*']
 };

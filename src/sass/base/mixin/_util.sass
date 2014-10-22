@@ -6,6 +6,12 @@
   width: image-width($name) / $pixel
   height: image-height($name) / $pixel
 
+=image-text( $img )
+  +image-size( $img )
+  +bg( $img )
+  @extend %hideText
+
+
 =trbl( $top: auto, $right: auto, $bottom: auto, $left:auto )
   @if $top != auto
     top: $top

@@ -64,5 +64,5 @@
   };
 
   ns.EventDispatcher = EventDispatcher;
-  global.benetton = ns;
-})( this, document, jQuery, this.benetton );
+  global.namespace = ns;
+})( this, document, jQuery, this.namespace );
