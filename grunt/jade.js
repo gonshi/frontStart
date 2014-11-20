@@ -1,39 +1,42 @@
 module.exports = {
+  options: {
+    pretty: true,
+    basedir: '<%= config.dir.src %>/jade'
+  },
+  compile: {
     options: {
-        pretty: true,
-        basedir: '<%= config.dir.src %>/jade'
+      pretty: true,
+      data: {
+        prod: false,
+        debug: true,
+        sc: '<%= config.jade.js %>',
+        libs: '<%= config.jade.libs %>',
+        meta: '<%= config.jade.meta %>'
+      }
     },
-    compile: {
-        options: {
-            data: {
-                prod: false,
-                sc: '<%= config.jade.js %>',
-                libs: '<%= config.jade.libs %>',
-                dummy: '<%= config.jade.dummy %>'
-            }
-        },
-        files: [{
-            expand: true,
-            cwd: '<%= config.dir.src %>/jade',
-            src: '**/!(_)*.jade',
-            dest: '<%= config.dir.tmp %>',
-            ext: '.html'
-        }]
+    files: [{
+      expand: true,
+      cwd: '<%= config.dir.src %>/jade',
+      src: '**/!(_)*.jade',
+      dest: '<%= config.dir.tmp %>',
+      ext: '.html'
+    }]
+  },
+  prod: {
+    options: {
+      pretty: true,
+      data: {
+        prod: true,
+        libs: '<%= config.jade.libs %>',
+        meta : '<%= config.jade.meta %>'
+      }
     },
-    prod: {
-        options: {
-            data: {
-                prod: true,
-                libs: '<%= config.jade.libs %>',
-                dummy: '<%= config.jade.dummy %>'
-            }
-        },
-        files: [{
-            expand: true,
-            cwd: '<%= config.dir.src %>/jade',
-            src: '**/!(_)*.jade',
-            dest: '<%= config.dir.dist %>',
-            ext: '.html'
-        }]
-    }
+    files: [{
+      expand: true,
+      cwd: '<%= config.dir.src %>/jade',
+      src: '**/!(_)*.jade',
+      dest: '<%= config.dir.dist %>',
+      ext: '.html'
+    }]
+  }
 };

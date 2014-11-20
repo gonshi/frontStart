@@ -8,12 +8,17 @@
 // $device-pixel-ratio: if use Retina-image, it should 2 and original-image-size is x2.
 // $sprites-image: sprite-url($sprite) ;for optimize compile
 
+// generate sprite
+//
+  $sprite: sprite-map("src", $spacing:5px, $layout:horizontal)
+  $sprite-img: sprite-url($sprite)
+
 =sprite-bg-size($name, $sprites, $device-pixel-ratio: 1)
   $_w: image-width(sprite-file($sprites, $name)) / $device-pixel-ratio
   $_h: image-height(sprite-file($sprites, $name)) / $device-pixel-ratio
   width: $_w
   height: $_h
-  background-size: $_w auto
+  background-size: auto $_h 
 
 =sprite-bg-position($name, $sprites, $device-pixel-ratio: 1)
   $_pos: sprite-position($sprites, $name)

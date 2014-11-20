@@ -11,22 +11,10 @@ module.exports = function(grunt) {
         ]);
     });
 
-    grunt.registerTask('test', [
-        'jshint:all',
-        'karma'
-    ]);
-
-    grunt.registerTask('default', function() {
-        grunt.task.run([
-            'jshint:all'
-        ]);
-    });
-
     grunt.registerTask('dev', function() {
         grunt.task.run([
             'clean:temp',
-            'jshint:all',
-            'copy:js',
+            'browserify',
             'copy:img',
             'jade:compile',
             'compass:dev',
@@ -37,22 +25,11 @@ module.exports = function(grunt) {
     grunt.registerTask('build', function() {
         grunt.task.run([
             'clean:prod',
-            'concat:js',
+            'browserify',
             'uglify:apps',
-            'copy:jsProd',
             'copy:imgProd',
             'compass:prod',
             'jade:prod'
         ]);
     });
-
-    grunt.registerTask('bi', [
-        'bower:install'
-    ]);
-
 };
-
-
-//-----------------------
-// Private Methods
-//-----------------------

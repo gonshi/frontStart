@@ -1,5 +1,6 @@
 # Readme
 
+* grunt-coffeeifyは普通のcoffeeifyにする
 ##### dev
 開発用タスク。
 

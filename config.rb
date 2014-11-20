@@ -11,15 +11,10 @@
 # Require any additional compass plugins here.
 
 # Set this to the root of your project when deployed:
-http_path = (environment == :production)? "/": "/"
 css_dir = (environment == :production)? "../css": ".tmp/css"
 sass_dir = "src/sass"
 images_dir = (environment == :production)? "../img": ".tmp/img"
-http_images_path = "/img"
 generated_images_dir = (environment == :production)? "../img" : ".tmp/img"
-http_generated_images_path = "/img"
-
-
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed

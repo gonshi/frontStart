@@ -1,11 +1,11 @@
 module.exports = {
-    dev: {
-        options: {}
-    },
-    prod: {
-        options: {
-            environment: 'production',
-            force: true
-        }
+  dev: {
+    options: {}
+  },
+  prod: {
+    options: {
+      environment: 'production',
+      force: true
     }
+  }
 };

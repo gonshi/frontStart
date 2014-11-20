@@ -35,6 +35,7 @@ body
   font-size: #{$baseFontSize}px
   *font-size: 82%
   line-height: 1.5
+  -webkit-text-size-adjust: 100%
 
 a
   color: inherit
@@ -111,6 +112,7 @@ legend
 img
   border: none
   box-sizing: border-box
+  vertical-align: middle
 
 object
   vertical-align: middle
@@ -154,6 +156,8 @@ button
   cursor: pointer
   margin: 0
   padding: 0
+  color: inherit
+  font-size: inherit
   &:focus
     outline: none
   \::-moz-focus-inner
