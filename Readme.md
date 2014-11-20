@@ -1,22 +1,18 @@
 # Readme
 
-* grunt-coffeeifyは普通のcoffeeifyにする
-##### dev
-開発用タスク。
+## init
+* npm install
+* bower install
 
-* jshintの実行
-* /src/js, /src/top, /src/img以下のファイル群を/.tmp以下にコピー
-* jadeのコンパイル
-* compass compileを実行
-* nodeサーバーの立ち上げ（localhost:9000; ルートディレクトリは/.tmp）
-* watch及びlivereload
+
+##### dev
+* 開発用タスク
 
 #### build
 * production版のファイルを作成
 * destinationは1階層下のディレクトリ(開発ディレクトリは/\_buildを想定)
 
 ### sass
-
 - src/sass: sassファイルを管理
 - base: reset, mixin, 変数などを管理
 - \_value.scss: グローバル変数をここで定義
