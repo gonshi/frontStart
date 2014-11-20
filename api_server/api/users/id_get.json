@@ -1,8 +1,8 @@
 {
-    "status": 1,
-    "message": "success",
-    "data": {
-      "id": #{id},
-      "name": "Yamada Taro"
-    }
+  "status": 1,
+  "message": "success",
+  "data": {
+    "id": #{id},
+    "name": "Yamada Taro"
+  }
 }

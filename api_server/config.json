@@ -1,9 +1,9 @@
 {
-    "proxy": {
-        "server": "",
-        "default": false
-    },
-    "routes": [
-        "/api/users/:id"
-    ]
+  "proxy": {
+    "server": "",
+    "default": false
+  },
+  "routes": [
+    "/api/users/:id"
+  ]
 }
