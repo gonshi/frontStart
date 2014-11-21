@@ -26,5 +26,5 @@ module.exports = SocialCallback
   # call share
   window.FB.ui
     method: 'share'
-    href: '' # TODO 
+    href: '' # TODO
 ###
