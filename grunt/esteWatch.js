@@ -25,7 +25,7 @@ module.exports = function(grunt) {
       return ['jade:compile'];
     },
     coffee: function() {
-      return ['browserify'];
+      return ['browserify', 'coffeelint'];
     },
     sass: function() {
       return ['compass:dev'];
