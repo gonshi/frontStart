@@ -17,7 +17,7 @@
     "grunt-contrib-livereload": "~0.1.2",
     "load-grunt-config": "~0.7.1",
     "grunt-browserify": "^3.2.0",
-    "grunt-coffeeify": "^0.1.3",
+    "coffeeify": "^0.4.1",
     "debowerify": "~0.9.1"
   },
   "dependencies": {
