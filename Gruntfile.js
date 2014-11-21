@@ -15,6 +15,7 @@ module.exports = function(grunt) {
         grunt.task.run([
             'clean:temp',
             'browserify',
+            'coffeelint',
             'copy:img',
             'jade:compile',
             'compass:dev',
@@ -26,6 +27,7 @@ module.exports = function(grunt) {
         grunt.task.run([
             'clean:prod',
             'browserify',
+            'coffeelint',
             'uglify:apps',
             'copy:imgProd',
             'compass:prod',
