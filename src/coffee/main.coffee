@@ -1,2 +1,6 @@
+###!
+  * Main Function
+###
+
 $ = require 'jquery'
 $ ->
