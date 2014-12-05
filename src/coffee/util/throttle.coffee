@@ -1,11 +1,19 @@
 class Throttle
+  if global?.performance?.now?
+    getNow = ->
+      global.performance.now()
+  else
+    getNow = ->
+      Date.now()
+
   constructor: ( minInterval )->
+    @is_first = true
     @interval = minInterval
     @prevTime = 0
-    @timer = ->
+    @timer = null
  
   exec: ( callback )->
-    now = +new Date()
+    now = getNow()
     delta = now - @prevTime
 
     clearTimeout( @timer )
@@ -13,6 +21,18 @@ class Throttle
       @prevTime = now
       callback()
     else
-      @timer = setTimeout callback, this.interval
+      @timer = setTimeout callback, @interval
+
+  first: ( callback )->
+    if @is_first
+      @is_first = false
+      callback()
+
+  last: ( callback )->
+    clearTimeout @timer
+    @timer = setTimeout =>
+      callback()
+      @is_first = true
+    , @interval
 
 module.exports = Throttle

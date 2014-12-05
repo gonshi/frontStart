@@ -1,46 +1,55 @@
 class Ticker
-  data = {}
-  fps_counter = 0
   if global?.performance?.now?
     getNow = ->
-      global.performance.now
+      global.performance.now()
   else
     getNow = ->
-      Date.now
-  now = getNow()
-  interval = fps = 0
-  listeners = []
-  startTime = now
-  prevTime = now
-  prevSecondTime = now
+      Date.now()
 
   constructor: ->
+    @interval = @fps = 0
+    @now = @startTime = @prevTime =
+    @prevSecondTime = getNow()
+
+    @listeners = []
+
+    @timeout = null
+
+    @data = {}
+    @fps_counter = 0
+
     @setFps 30
-    timer()
+    @timer()
 
   setFps: ( _fps )->
-    fps = _fps
-    interval = 1000 / _fps
+    @fps = _fps
+    @interval = 1000 / _fps
 
   listen: ( callback )->
-    listeners.push callback
+    @listeners.push callback
 
-  timer = ->
-    now = getNow()
-    data.runTime = now - startTime
-    data.delta = now - prevTime
-    prevTime = now
+  stop: ->
+    window.clearTimeout( @timeout )
 
-    fps_counter += 1
-    if fps_counter == fps
-      data.measuredFps = fps /
-                         ( ( now - prevSecondTime ) / 1000 )
-      prevSecondTime = now
-      fps_counter = 0
+  timer: ->
+    @now = getNow()
+    @data.runTime = @now - @startTime
+    @data.delta = @now - @prevTime
+    @prevTime = @now
 
-    for i of listeners
-      listeners[ i ] data
-    setTimeout timer, interval
+    @fps_counter += 1
+    if @fps_counter == @fps
+      @data.measuredFps = @fps /
+                          ( ( @now - @prevSecondTime ) / 1000 )
+      @prevSecondTime = @now
+      @fps_counter = 0
+
+    @timeout = setTimeout =>
+      @timer()
+    , @interval
+
+    for listener in @listeners
+      listener @data
 
 getInstance = ->
   if !instance

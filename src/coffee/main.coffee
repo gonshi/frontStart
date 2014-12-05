@@ -2,5 +2,5 @@
   * Main Function
 ###
 
-$ = require 'jquery'
+$ = require "jquery"
 $ ->

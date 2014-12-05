@@ -1,3 +1,8 @@
+mixin fbOriginal(img)
+  p.fb-share
+    button.fb-share-button
+      img(src=img alt="シェア")
+
 mixin tweetOriginal(img)
   - var url = encodeURIComponent(meta.url)
   - var text = encodeURIComponent(meta.description)
@@ -6,7 +11,7 @@ mixin tweetOriginal(img)
       img(src=img alt="ツイート")
 
 mixin line(img)
-  - var text = encodeURIComponent(meta.description + ' ' + meta.url)
+  - var text = encodeURIComponent(meta.description + " " + meta.url)
   p.line
-    a(href="http://line.me/R/msg/text/?" + text)
+    a(href="http://line.me/R/msg/text/?#{text}")
       img(src=img alt="LINEで送る")

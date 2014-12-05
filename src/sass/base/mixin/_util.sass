@@ -2,9 +2,12 @@
   background: image-url($img) $repeat $position 
   background-size: $size
 
-=image-size($name, $pixel: 1)
+=image-size($name, $pixel: $pixelRatio)
   width: image-width($name) / $pixel
   height: image-height($name) / $pixel
+
+  img
+    width: 100%
 
 =image-txt( $img )
   +image-size( $img )
