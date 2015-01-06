@@ -1,3 +1,5 @@
+instance = null
+
 class Ticker
   if global?.performance?.now?
     getNow = ->

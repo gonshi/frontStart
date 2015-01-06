@@ -1,9 +1,9 @@
-mixin fbOriginal(img)
+mixin fb-share(img)
   p.fb-share
     button.fb-share-button
       img(src=img alt="シェア")
 
-mixin tweetOriginal(img)
+mixin tweet(img)
   - var url = encodeURIComponent(meta.url)
   - var text = encodeURIComponent(meta.description)
   p.tweet
@@ -15,3 +15,10 @@ mixin line(img)
   p.line
     a(href="http://line.me/R/msg/text/?#{text}")
       img(src=img alt="LINEで送る")
+
+mixin hatena(img)
+  - var url = encodeURIComponent(meta.url)
+  - var title = encodeURIComponent(meta.title)
+  p.hatena
+    a(href="http://b.hatena.ne.jp/add?url=#{url}&title=#{title}" target="_blank")
+      img(src=img alt="このエントリーをはてなブックマークに追加")

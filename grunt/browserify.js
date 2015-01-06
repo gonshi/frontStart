@@ -7,6 +7,7 @@ module.exports = function(grunt) {
       options: {
         transform: ['coffeeify', 'debowerify'],
         browserifyOptions: {
+          debug: true,
           extensions: '.coffee'
         }
       }

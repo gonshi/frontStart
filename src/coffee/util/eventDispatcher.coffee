@@ -10,7 +10,7 @@ class EventDispatcher
 
   dispatch: ( eventName, opt_this, arg... )->
     if @listeners[ eventName ]
-      for listener of @listeners[ eventName ]
+      for listener in @listeners[ eventName ]
         listener.apply opt_this || @, arg
 
 module.exports = EventDispatcher

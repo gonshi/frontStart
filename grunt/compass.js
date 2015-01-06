@@ -1,6 +1,8 @@
 module.exports = {
   dev: {
-    options: {}
+    options: {
+        sourcemap: true
+    }
   },
   prod: {
     options: {
