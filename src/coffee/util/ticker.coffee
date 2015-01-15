@@ -31,7 +31,10 @@ class Ticker
     @listeners.push callback
 
   stop: ->
-    window.clearTimeout( @timeout )
+    window.clearTimeout @timeout
+
+  reset: ->
+    @startTime = @prevTime = @prevSecondTime = getNow()
 
   timer: ->
     @now = getNow()
