@@ -21,7 +21,10 @@ class Throttle
       @prevTime = now
       callback()
     else
-      @timer = setTimeout callback, @interval
+      @timer = setTimeout ->
+        @is_first = true
+        callback()
+      , @interval
 
   first: ( callback )->
     if @is_first
@@ -34,5 +37,8 @@ class Throttle
       callback()
       @is_first = true
     , @interval
+
+  triggerend: ->
+    @is_first = true
 
 module.exports = Throttle

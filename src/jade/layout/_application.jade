@@ -25,8 +25,6 @@ html(lang="ja")
   body
     block body
     block scripts
-      include /include/script/_facebook
-      include /include/script/_twitter
       if debug
         script.
           window._DEBUG = {
@@ -36,3 +34,5 @@ html(lang="ja")
         script(src="js/app.min.js?v=" + dateParam)
       else
         script(src="js/app.js")
+      include /include/script/_facebook
+      include /include/script/_twitter

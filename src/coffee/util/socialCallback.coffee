@@ -8,16 +8,16 @@ class SocialCallback
       twttr.events.bind "tweet", ->
         _callback "tw"
 
-    # native facebook btn
-    window.fbAsyncInit = ->
-      window.FB.init
-        appId      : "", # TODO
-        xfbml      : true,
-        version    : "v2.2"
-        window.FB.Event.subscribe "edge.create",
-          ( response )->
-            if response
-              _callback "fb-like"
+    # callback of FB like
+    window.FB.Event.subscribe "edge.create",
+      ( response )->
+        _callback "fb" if response
+
+    # fb-share
+    $( document ).on "click", ".fb-share button", ( e )->
+      window.FB.ui
+        method: "share"
+        href: window.location.href
 
     # twitter share
     $( document ).on "click", ".tweet", ( e )->

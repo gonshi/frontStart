@@ -1,9 +1,9 @@
 instance = null
 
 class Ticker
-  if global?.performance?.now?
+  if window?.performance?.now?
     getNow = ->
-      global.performance.now()
+      window.performance.now()
   else
     getNow = ->
       Date.now()
@@ -33,8 +33,11 @@ class Ticker
   stop: ->
     window.clearTimeout @timeout
 
-  reset: ->
+  resetTime: ->
     @startTime = @prevTime = @prevSecondTime = getNow()
+
+  resetListener: ->
+    @listeners = []
 
   timer: ->
     @now = getNow()
