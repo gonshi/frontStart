@@ -10,28 +10,44 @@ html(lang="ja")
     block meta
       include /include/meta/_basicinfo
     block style
-      - var now = new Date();
-      - var month = ( "00" + ( now.getMonth() + 1 ) ).slice( -2 );
-      - var date = ( "00" + now.getDate() ).slice( -2 );
-      - var hour = ( "00" + now.getHours() ).slice( -2 );
-      - var minute = ( "00" + now.getMinutes() ).slice( -2 );
-      - var dateParam = "" + month + date + hour + minute; 
-      link(rel="stylesheet", href="css/main.css?v=" + dateParam, media="screen, print")
-      link(rel="shortcut icon", type="image/vnd.microsoft.icon", href="favicon.ico?v=" + dateParam)
-      link(rel="icon", type="image/vnd.microsoft.icon", href="favicon.ico?v=" + dateParam)
+      link(rel="stylesheet", href="css/main.css", media="screen, print")
+      link(rel="shortcut icon", type="image/vnd.microsoft.icon", href="favicon.ico")
+      link(rel="icon", type="image/vnd.microsoft.icon", href="favicon.ico")
     // script(type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411")
     +ltIE9
       script(src="js/lib/html5shiv.js")
   body
     block body
     block scripts
+      script.
+        var ua = window.navigator.userAgent;
+        if ( ( /ipod|iphone|ipad|android/i ).test( ua ) ){
+          var i;
+          var pc_contents = document.querySelectorAll( ".pc" );
+          var pc_contentsLength = pc_contents.length;
+          var sp_contents = document.querySelectorAll( ".sp" );
+          var sp_contentsLength = sp_contents.length;
+          for ( i = 0; i < pc_contentsLength; i++ ){
+            pc_contents[ i ].style.display = "none";
+          }
+          for ( i = 0; i < sp_contentsLength; i++ ){
+            sp_contents[ i ].style.display = "block";
+          }
+
+          if ( ( /ipad|iphone|ipad/i ).test( ua ) ){
+            // set meta viewport
+            document.querySelector( 'meta[name="viewport"]' ).setAttribute(
+              "content", "width=640, minimum-scale=0.25, maximum-scale=1.6, user-scalable=no"
+            );
+          }
+        }
       if debug
         script.
           window._DEBUG = {
             state: true
           }; 
       if prod
-        script(src="js/app.min.js?v=" + dateParam)
+        script(src="js/app.min.js")
       else
         script(src="js/app.js")
       include /include/script/_facebook

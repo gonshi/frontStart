@@ -1,6 +1,7 @@
 class EventDispatcher
   constructor: ->
     @listeners = {}
+    @dispatched = {}
 
   listen: ( eventName, callback )->
     if @listeners[ eventName ]?
@@ -10,6 +11,13 @@ class EventDispatcher
 
   dispatch: ( eventName, opt_this, arg... )->
     if @listeners[ eventName ]
+      for listener in @listeners[ eventName ]
+        listener.apply opt_this || @, arg
+
+  first: ( eventName, opt_this, arg... )->
+    if @listeners[ eventName ] &&
+       !@dispatched[ eventName ]?
+      @dispatched[ eventName ] = true
       for listener in @listeners[ eventName ]
         listener.apply opt_this || @, arg
 

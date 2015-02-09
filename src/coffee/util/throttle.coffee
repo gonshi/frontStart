@@ -1,7 +1,7 @@
 class Throttle
-  if global?.performance?.now?
+  if window?.performance?.now?
     getNow = ->
-      global.performance.now()
+      window.performance.now()
   else
     getNow = ->
       Date.now()
@@ -16,13 +16,12 @@ class Throttle
     now = getNow()
     delta = now - @prevTime
 
-    clearTimeout( @timer )
+    clearTimeout @timer
     if delta >= @interval
       @prevTime = now
       callback()
     else
       @timer = setTimeout ->
-        @is_first = true
         callback()
       , @interval
 
@@ -30,12 +29,16 @@ class Throttle
     if @is_first
       @is_first = false
       callback()
+    else
+      clearTimeout @firstTimer
+      @firstTimer = setTimeout =>
+        @is_first = true
+      , @interval
 
   last: ( callback )->
-    clearTimeout @timer
-    @timer = setTimeout =>
+    clearTimeout @lastTimer
+    @lastTimer = setTimeout =>
       callback()
-      @is_first = true
     , @interval
 
   triggerend: ->
