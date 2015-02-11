@@ -37,7 +37,7 @@ class Throttle
 
   last: ( callback )->
     clearTimeout @lastTimer
-    @lastTimer = setTimeout =>
+    @lastTimer = setTimeout ->
       callback()
     , @interval
 

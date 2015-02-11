@@ -17,6 +17,7 @@ module.exports = function(grunt) {
             'browserify',
             'coffeelint',
             'copy:img',
+            'copy:js',
             'jade:compile',
             'compass:dev',
             'server'
@@ -30,6 +31,7 @@ module.exports = function(grunt) {
             'coffeelint',
             'uglify:apps',
             'copy:imgProd',
+            'copy:jsProd',
             'compass:prod',
             'jade:prod'
         ]);

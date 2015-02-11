@@ -3,7 +3,7 @@ module.exports = {
     files: [{
       expand: true,
       cwd: '<%= config.dir.src %>/js',
-      src:['lib/**/*.js'],
+      src:['**/*.js'],
       dest: '<%= config.dir.tmp %>/js'
     }]
   },
@@ -11,7 +11,7 @@ module.exports = {
     files: [{
       expand: true,
       cwd: '<%= config.dir.src %>/js/',
-      src:['lib/**/*.js'],
+      src:['**/*.js'],
       dest: '<%= config.dir.dist %>/js/'
     }]
   },

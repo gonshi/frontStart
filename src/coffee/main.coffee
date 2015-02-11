@@ -2,7 +2,6 @@
   * Main Function
 ###
 
-$ = require "jquery"
 $ ->
   if window._DEBUG
     if Object.freeze?
