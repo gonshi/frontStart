@@ -9,9 +9,10 @@ class SocialCallback
         _callback "tw"
 
     # callback of FB like
-    window.FB.Event.subscribe "edge.create",
-      ( response )->
-        _callback "fb" if response
+    window.onload = ->
+      window.FB.Event.subscribe "edge.create",
+        ( response )->
+          _callback "fb" if response
 
     # fb-share
     $( document ).on "click", ".fb-share button", ( e )->

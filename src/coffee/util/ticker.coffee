@@ -17,43 +17,26 @@ class Ticker
       ( callback )-> window.setTimeout callback, 1000 / 60
 
   constructor: ->
-    @now = @startTime = @prevTime =
-    @prevSecondTime = getNow()
-
-    @listeners = []
-    @data = {}
-    @fps_counter = 0
+    @listeners = {}
 
     ################################
     # PRIVATE
     ################################
     _renderer = =>
-      @now = getNow()
-      @data.runTime = @now - @startTime
-      @data.delta = @now - @prevTime
-      @prevTime = @now
-
-      @fps_counter += 1
-      if @fps_counter == @FPS
-        @data.measuredFps = @FPS /
-                            ( ( @now - @prevSecondTime ) / 1000 )
-        @prevSecondTime = @now
-        @fps_counter = 0
-
-      for listener in @listeners
-        listener @data
+      for name of @listeners
+        @listeners[ name ]()
       window.requestAnimFrame _renderer
 
     _renderer()
 
-  listen: ( callback )->
-    @listeners.push callback
+  listen: ( name, func )->
+    @listeners[ name ] = func
 
-  clear: ->
-    @listeners = []
-
-  stop: ->
-    window.clearTimeout @timeout
+  clear: ( name )->
+    if name?
+      delete @listeners[ name ]
+    else
+      @listeners = {}
 
 getInstance = ->
   if !instance

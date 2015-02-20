@@ -21,4 +21,7 @@ class EventDispatcher
       for listener in @listeners[ eventName ]
         listener.apply opt_this || @, arg
 
+  clear: ( eventName )->
+    @listeners[ eventName ] = null
+
 module.exports = EventDispatcher
