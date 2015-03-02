@@ -12,6 +12,8 @@ class ResizeHandler extends EventDispatcher
     $( window ).on "resize", =>
       throttle.exec => @dispatch "RESIZED", this
 
+  off: -> $( window ).off "resize"
+
 getInstance = ->
   if !instance
     instance = new ResizeHandler()

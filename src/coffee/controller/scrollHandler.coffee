@@ -12,6 +12,8 @@ class ScrollHandler extends EventDispatcher
     $( document ).on "scroll", =>
       throttle.exec => @dispatch "SCROLLED", this
 
+  off: -> $( document ).off "scroll"
+
 getInstance = ->
   if !instance
     instance = new ScrollHandler()

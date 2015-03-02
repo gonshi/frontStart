@@ -27,7 +27,9 @@ html(lang="ja")
           var pc_contentsLength = pc_contents.length;
           var sp_contents = document.querySelectorAll( ".sp" );
           var sp_contentsLength = sp_contents.length;
+
           window.isSp = true;
+          document.body.classList.add( "is_sp" );
 
           for ( i = 0; i < pc_contentsLength; i++ ){
             pc_contents[ i ].style.display = "none";
@@ -41,6 +43,10 @@ html(lang="ja")
             document.querySelector( 'meta[name="viewport"]' ).setAttribute(
               "content", "width=640, minimum-scale=0.25, maximum-scale=1.6, user-scalable=no"
             );
+          }
+          // android
+          else if ( ( /android/i ).test( ua ) ){
+            document.body.style.zoom = window.innerWidth / #{meta.viewport};
           }
         }
         else{

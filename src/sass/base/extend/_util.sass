@@ -15,3 +15,13 @@
 %activeEffect
   &:active
     opacity: 0.6
+
+%spSocial
+  position: relative
+
+  > iframe,
+  > span
+    position: absolute
+    +trbl(0, auto, auto, 0)
+    +transform-origin(0px, 0px)
+    +scale(2)
