@@ -41,7 +41,7 @@ html(lang="ja")
           if ( ( /ipad|iphone|ipad/i ).test( ua ) ){
             // set meta viewport
             document.querySelector( 'meta[name="viewport"]' ).setAttribute(
-              "content", "width=640, minimum-scale=0.25, maximum-scale=1.6, user-scalable=no"
+              "content", "width=#{meta.viewport}, minimum-scale=0.25, maximum-scale=1.6, user-scalable=no"
             );
           }
           // android
