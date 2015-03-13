@@ -14,3 +14,6 @@ else
     window.DEBUG = state: false
 
 $ ->
+  if ( ( /android/i ).test( window.navigator.userAgent ) )
+    window.onload = ->
+      document.body.style.zoom = window.innerWidth / 640

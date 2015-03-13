@@ -24,3 +24,14 @@
     bottom: $bottom
   @if $left != auto
     left: $left
+
+=sprite($img, $num)
+  width: image-width($img)
+  height: image-height($img) / $num
+  background-image: image-url($img)
+  background-size: 100% auto
+  +sprite-position($img, 0, $num)
+  @extend %hideText
+
+=sprite-position($img, $num, $totalNum)
+  background-position: 0 -1 * image-height($img) / $totalNum * $num
