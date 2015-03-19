@@ -1,10 +1,10 @@
 instance = null
 
 class Ticker
-  if window?.performance?.now?
-    getNow = -> window.performance.now()
+  if window.performance?
+    window.getNow = -> window.performance.now()
   else
-    getNow = -> Date.now()
+    window.getNow = -> Date.now()
 
   if window.requestAnimationFrame?
     window.requestAnimFrame = window.requestAnimationFrame
@@ -25,13 +25,13 @@ class Ticker
     ################################
     _renderer = =>
       for name of @listeners
-        @listeners[ name ]( getNow() - @start[ name ] )
+        @listeners[ name ]( window.getNow() - @start[ name ] )
       window.requestAnimFrame _renderer
 
     _renderer()
 
   listen: ( name, func )->
-    @start[ name ] = getNow()
+    @start[ name ] = window.getNow()
     @listeners[ name ] = func
 
   clear: ( name )->

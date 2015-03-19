@@ -1,10 +1,8 @@
 class Throttle
-  if window?.performance?.now?
-    getNow = ->
-      window.performance.now()
+  if window.performance?
+    window.getNow = -> window.performance.now()
   else
-    getNow = ->
-      Date.now()
+    window.getNow = -> Date.now()
 
   constructor: ( minInterval )->
     @is_first = true
@@ -13,7 +11,7 @@ class Throttle
     @timer = null
  
   exec: ( callback )->
-    now = getNow()
+    now = window.getNow()
     delta = now - @prevTime
 
     clearTimeout @timer
