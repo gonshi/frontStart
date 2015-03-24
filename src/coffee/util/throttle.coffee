@@ -1,5 +1,5 @@
 class Throttle
-  if window.performance?
+  if window.performance?.now?
     window.getNow = -> window.performance.now()
   else
     window.getNow = -> Date.now()
