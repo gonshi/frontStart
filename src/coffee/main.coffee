@@ -14,6 +14,7 @@ else
     window.DEBUG = state: false
 
 $ ->
-  if ( ( /android/i ).test( window.navigator.userAgent ) )
-    window.onload = ->
-      document.body.style.zoom = window.innerWidth / 640
+  if window.isAndroid
+    _viewport = parseInt( document.querySelector( 'meta[name="viewport"]' )
+                .getAttribute( "content" ).match( /width=(.*?),/ )[ 1 ] )
+    window.onload = -> document.body.style.zoom = window.innerWidth / _viewport
