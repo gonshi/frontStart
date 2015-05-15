@@ -1,0 +1,71 @@
+script.
+  var ua = window.navigator.userAgent;
+  var ver = window.navigator.appVersion;
+  var limited_contents = document.querySelectorAll(".limited");
+  var limited_contentsLength = limited_contents.length;
+
+  window.isSp = false;
+  window.isAndroid = false;
+  window.isLegacyPc = false;
+  window.isLegacySp = false;
+
+  if (( /ipod|iphone|ipad|android/i ).test(ua)){
+    var i;
+
+    window.isSp = true;
+    document.body.className +=" is_sp";
+
+    if ((/ipad|iphone|ipad/i ).test(ua)){
+      // set meta viewport
+      document.querySelector('meta[name="viewport"]').setAttribute(
+        "content", "width=#{meta.viewport}, minimum-scale=0.25, maximum-scale=1.6, user-scalable=no"
+      );
+    }
+    // android
+    else if ((/android/i).test(ua)){
+      document.body.style.zoom = window.innerWidth / #{meta.viewport};
+      window.onload = function(){
+        document.body.style.zoom = window.innerWidth / #{meta.viewport};
+      };
+      window.isAndroid = true;
+      
+      if ((/android 2.[123]/i).test(ua)){
+        window.isLegacySp = true;
+      }
+    }
+
+    if (!window.isLegacySp){
+      for (i = 0; i < limited_contentsLength; i++){
+        if ( limited_contents[ i ].getAttribute( "data-env" ).match( "modern_sp" ) ){
+          limited_contents[ i ].style.display = "block";
+        }
+      }
+    }
+    else{
+      for (i = 0; i < limited_contentsLength; i++){
+        if ( limited_contents[ i ].getAttribute( "data-env" ).match( "legacy_sp" ) ){
+          limited_contents[ i ].style.display = "block";
+        }
+      }
+    }
+  }
+  else{
+    document.body.className += " is_pc";
+    if ((/msie/i).test(ua) && (/msie 8./i).test(ver)){
+      for (i = 0; i < limited_contentsLength; i++){
+        if ( limited_contents[ i ].getAttribute( "data-env" ).match( "legacy_pc" ) ){
+          limited_contents[ i ].style.display = "block";
+        }
+      }
+      document.body.className += " is_legacy_pc";
+      window.is_legacy_pc = true;
+    }
+    else{
+      for (i = 0; i < limited_contentsLength; i++){
+        if ( limited_contents[ i ].getAttribute( "data-env" ).match( "modern_pc" ) ){
+          limited_contents[ i ].style.display = "block";
+        }
+      }
+    }
+  }
+

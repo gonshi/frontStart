@@ -83,6 +83,17 @@ class Social
       s = document.getElementsByTagName( "script" )[0]
       s.parentNode.insertBefore po, s
 
+    # fb-share
+    if type.fb_share?
+      if !type.fb?
+        fjs = document.getElementsByTagName( "script" )[ 0 ]
+        return if document.getElementById "facebook-jssdk"
+        js = document.createElement "script"
+        js.id = "facebook-jssdk"
+        js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&" +
+                "appId=1548831858693621&version=v2.0"
+        fjs.parentNode.insertBefore js, fjs
+
     ###
     # fb-share
     $( document ).on "click", ".fb-share button", ( e )->
