@@ -36,4 +36,17 @@ module.exports = function(grunt) {
             'jade:prod'
         ]);
     });
+
+    grunt.registerTask('deploy', function() {
+        grunt.task.run([
+            'clean:prod',
+            'browserify',
+            'coffeelint',
+            'uglify:apps',
+            'copy:imgProd',
+            'copy:jsProd',
+            'compass:prod',
+            'jade:deploy'
+        ]);
+    });
 };

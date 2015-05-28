@@ -11,12 +11,12 @@ class Throttle
     @timer = null
  
   exec: ( callback )->
-    now = window.getNow()
-    delta = now - @prevTime
+    _now = window.getNow()
+    _delta = _now - @prevTime
 
     clearTimeout @timer
-    if delta >= @interval
-      @prevTime = now
+    if _delta >= @interval
+      @prevTime = _now
       callback()
     else
       @timer = setTimeout ->

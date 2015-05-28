@@ -1,16 +1,15 @@
 EventDispatcher = require "../util/eventDispatcher"
 Throttle = require "../util/throttle"
-instace = null
+instance = null
   
 class ResizeHandler extends EventDispatcher
-  constructor: ->
-    super()
+  constructor: -> super()
 
   exec: ->
-    throttle = new Throttle 100
+    _throttle = new Throttle 100
 
     $( window ).on "resize", =>
-      throttle.exec => @dispatch "RESIZED", this
+      _throttle.exec => @dispatch "RESIZED", this
 
   off: -> $( window ).off "resize"
 

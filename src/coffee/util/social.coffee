@@ -2,12 +2,12 @@ instance = null
 
 class Social
   exec: ->
-    type = {}
+    _type = {}
     for i in [ 0...arguments.length ]
-      type[ arguments[ i ] ] = true
+      _type[ arguments[ i ] ] = true
 
     # facebook
-    if type.fb?
+    if _type.fb?
       _dom = document.querySelectorAll( ".fb-like" )
       for i in [ 0..._dom.length ]
         _dom[ i ].style.opacity = 1
@@ -21,7 +21,7 @@ class Social
       fjs.parentNode.insertBefore js, fjs
     
     # twitter
-    if type.tweet?
+    if _type.tweet?
       _dom = document.querySelectorAll( ".tweet" )
       for i in [ 0..._dom.length ]
         _dom[ i ].style.opacity = 1
@@ -43,7 +43,7 @@ class Social
       )()
 
     # hatena
-    if type.hatena?
+    if _type.hatena?
       _dom = document.querySelectorAll( ".hatena" )
       for i in [ 0..._dom.length ]
         _dom[ i ].style.opacity = 1
@@ -57,7 +57,7 @@ class Social
       s.parentNode.insertBefore j, s
 
     # pocket
-    if type.pocket?
+    if _type.pocket?
       _dom = document.querySelectorAll( ".pocket" )
       for i in [ 0..._dom.length ]
         _dom[ i ].style.opacity = 1
@@ -71,7 +71,7 @@ class Social
         document.body.appendChild j
 
     # gplus
-    if type.gplus?
+    if _type.gplus?
       _dom = document.querySelectorAll( ".gplus" )
       for i in [ 0..._dom.length ]
         _dom[ i ].style.opacity = 1
@@ -84,8 +84,8 @@ class Social
       s.parentNode.insertBefore po, s
 
     # fb-share
-    if type.fb_share?
-      if !type.fb?
+    if _type.fb_share?
+      if !_type.fb?
         fjs = document.getElementsByTagName( "script" )[ 0 ]
         return if document.getElementById "facebook-jssdk"
         js = document.createElement "script"

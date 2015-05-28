@@ -1,18 +1,17 @@
 EventDispatcher = require "../util/eventDispatcher"
 Throttle = require "../util/throttle"
-instace = null
+instance = null
   
 class ScrollHandler extends EventDispatcher
-  constructor: ->
-    super()
+  constructor: -> super()
 
   exec: ->
-    throttle = new Throttle 100
+    _throttle = new Throttle 100
 
-    $( document ).on "scroll", =>
-      throttle.exec => @dispatch "SCROLLED", this
+    $( window ).on "scroll", =>
+      _throttle.exec => @dispatch "SCROLLED", this
 
-  off: -> $( document ).off "scroll"
+  off: -> $( window ).off "scroll"
 
 getInstance = ->
   if !instance

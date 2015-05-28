@@ -31,6 +31,7 @@ html(lang="ja")
         window.isSp = false;
         window.isAndroid = false;
         window.isIE8 = false;
+        window.zoom = 1;
 
         if (( /ipod|iphone|ipad|android/i ).test(ua)){
           var i;
@@ -57,9 +58,12 @@ html(lang="ja")
           }
           // android
           else if ((/android/i).test(ua)){
-            document.body.style.zoom = window.innerWidth / #{meta.viewport};
+            window.zoom = window.innerWidth / #{meta.viewport};
+            document.body.style.zoom = window.zoom; 
+
             window.onload = function(){
-              document.body.style.zoom = window.innerWidth / #{meta.viewport};
+              window.zoom = window.innerWidth / #{meta.viewport};
+              document.body.style.zoom = window.zoom;
             };
             window.isAndroid = true;
           }
