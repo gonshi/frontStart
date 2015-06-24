@@ -1,24 +1,50 @@
-mixin fb-share(img)
-  p.fb-share.social
-    button
-      img(src=img alt="シェア")
+mixin fb-share(file_path, add_class, limited)
+  - if (add_class==undefined){
+      - var add_class = "";
+  - }
+  p.fb-share.social(class="#{add_class}")
+    button(data-url="#{meta.url}")
+      if limited != "sp"
+        img.pc(src="#{path}img/pc/#{file_path}" alt="シェア")
+      if limited != "pc"
+        img.sp(src="#{path}img/#{file_path}" alt="シェア")
 
-mixin tweet(img)
-  - var url = encodeURIComponent(meta.url)
-  - var text = encodeURIComponent(meta.description)
-  p.tweet.social
-    a(href!="http://twitter.com/share?url=" + url + "&text=" + text target="_blank")
-      img(src=img alt="ツイート")
+mixin tweet(file_path, add_class, limited)
+  - var url = encodeURIComponent(meta.url);
+  - var text_row = meta.tweet_description;
+  - var text = encodeURIComponent(text_row);
 
-mixin line(img)
+  - if (add_class==undefined){
+      - var add_class = "";
+  - }
+  p.tweet.social(class="#{add_class}")
+    a(href!="http://twitter.com/share?url=" + url + "&text=" + text target="_blank" data-text="#{text_row}")
+      if limited != "sp"
+        img.pc(src="#{path}img/pc/#{file_path}" alt="ツイート")
+      if limited != "pc"
+        img.sp(src="#{path}img/#{file_path}" alt="ツイート")
+
+mixin line(file_path, add_class, limited)
   - var text = encodeURIComponent(meta.description + " " + meta.url)
-  p.line.social
+  - if (add_class==undefined){
+      - var add_class = "";
+  - }
+  p.line.social(class="#{add_class}")
     a(href="http://line.me/R/msg/text/?#{text}")
-      img(src=img alt="LINEで送る")
+      if limited != "sp"
+        img.pc(src="#{path}img/pc/#{file_path}" alt="LINEで送る")
+      if limited != "pc"
+        img.sp(src="#{path}img/#{file_path}" alt="LINEで送る")
 
-mixin hatena(img)
+mixin hatena(img, add_class, limited)
   - var url = encodeURIComponent(meta.url)
   - var title = encodeURIComponent(meta.title)
-  p.hatena.social
+  - if (add_class==undefined){
+      - var add_class = "";
+  - }
+  p.hatena.social(class="#{add_class}")
     a(href="http://b.hatena.ne.jp/add?url=#{url}&title=#{title}" target="_blank")
-      img(src=img alt="このエントリーをはてなブックマークに追加")
+      if limited != "sp"
+        img.pc(src="#{path}img/pc/#{file_path}" alt="このエントリーをはてなブックマークに追加")
+      if limited != "pc"
+        img.sp(src="#{path}img/#{file_path}" alt="このエントリーをはてなブックマークに追加")

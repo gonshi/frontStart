@@ -102,6 +102,37 @@ class Social
         href: window.location.href
     ###
 
+    # tweet
+    $( document ).on "click", ".tweet a", ( e )->
+      e.preventDefault()
+
+      if window.screenLeft?
+        _dualScreenLeft = window.screenLeft
+        _dualScreenTop = window.screenTop
+      else
+        _dualScreenLeft = screen.left
+        _dualScreenTop = screen.top
+
+      if window.innerWidth?
+        _windowWidth = window.innerWidth
+        _windowHeight = window.innerHeight
+      else if document.documentElement?.clientWidth?
+        _windowWidth = document.documentElement.clientWidth
+        _windowWidth = document.documentElement.clientHeight
+      else
+        _windowWidth = screen.width
+        _windowWidth = screen.height
+
+      _popupWidth = 650
+      _popupHeight = 450
+
+      _left = ( ( _windowWidth / 2 ) - ( _popupWidth / 2 ) ) + _dualScreenLeft
+      _top = ( ( _windowHeight / 2 ) - ( _popupHeight / 2 ) ) + _dualScreenTop
+
+      window.open $( e.currentTarget ).attr( "href" ), "twitter",
+                  "width=#{ _popupWidth }, height=#{ _popupHeight }, " +
+                  "top=#{ _top }, left=#{ _left }"
+
   callback: ->
     # twitter
     window.twttr.ready ( twttr )->
